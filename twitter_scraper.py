@@ -34,10 +34,10 @@ sleep(3)
 username = driver.find_element_by_xpath('//input[@name="session[username_or_email]"]')
 username.send_keys('GopalJa01147205')
 
-my_password = getpass()
+# my_password = getpass()
 
 password = driver.find_element_by_xpath('//input[@name="session[password]"]')
-password.send_keys(my_password)
+password.send_keys('Abcde@123')
 
 password.send_keys(Keys.RETURN)
 
