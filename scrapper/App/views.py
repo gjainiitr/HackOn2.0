@@ -1,3 +1,7 @@
+from django.shortcuts import render, HttpResponse
+from .models import Post
+#from .twitter_scraper import scrape
+
 def scrape(query, size):
     import csv
     from getpass import getpass
@@ -47,17 +51,21 @@ def scrape(query, size):
     #################################################################
     sleep(3)
 
+
+
     # Finding the search bar
     search_bar = driver.find_element_by_xpath('//a[@aria-label="Search and explore"]')
     search_bar.click()
 
-    sleep(1)
+    sleep(5)
 
     # Inputting the text to search bar
     search_input = driver.find_element_by_xpath('//input[@aria-label="Search query"]')
     search_input.send_keys(query)
-
     search_input.send_keys(Keys.RETURN)
+
+    sleep(5)
+
     driver.find_element_by_link_text('Latest').click()
 
     data = []
@@ -99,3 +107,43 @@ def scrape(query, size):
                 break
     
     return data
+
+
+# import twitter_scrapper.py
+def resolve_query(request):
+    query = request.GET.__getitem__('query')    
+    
+    
+    # Actuall twitter scraping
+    passedData = []
+    data = scrape(query, 20)
+    for item in data:
+        curr = Post()
+        curr.handle = item[1]
+        curr.post = item[3]
+        passedData.append(curr)  
+    
+    # Dummy scraping
+    #text = ['@sesine6', '@RupertaMargate', '@sahilkumarska', '@trapswav', '@raahtv']    
+    #handle = ['@sesine6', '@RupertaMargate', '@sahilkumarska', '@trapswav', '@raahtv']
+
+    
+    #for i in range(len(text)):
+    #    curr = Post()
+    #    curr.handle = handle[i]
+    #    curr.post = text[i]
+    #    passedData.append(curr)
+
+    context =  {
+     'variable': passedData     
+    }
+    return render(request,"next.html",context)
+
+# Create your views here.
+def html_view(request):
+    #response=requests.get('url of api').json() --> try this way
+    return render(request, "home.html")
+
+#1 Query -> make accessible as a string
+#2 Custom data pass -> see if it is accessible inside html page
+#3 Use scrapper

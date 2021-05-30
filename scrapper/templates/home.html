@@ -5,49 +5,85 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <script src=""></script>
+  <script src="https://kit.fontawesome.com/dbf4dd7aa9.js" crossorigin="anonymous"></script>
+
+  <style>
+      h1{
+            color:rgb(63, 149, 247);
+            font-size:35px;
+            text-align: center;
+        }
+
+     .sb-example-1 .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .sb-example-1 .searchTerm {
+            width: 75%;
+            border: 3px solid #00B4CC;
+            border-right: none;
+            padding: 5px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9DBFAF;
+        }
+
+        .sb-example-1 .searchTerm:focus {
+            color: #00B4CC;
+        }
+
+        .sb-example-1 .searchButton {
+            width: 40px;
+            height: 50px;
+            border: 1px solid #00B4CC;
+            background: #00B4CC;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap {
+            width: 30%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+  </style>
+
   <title>Document</title>
+
+  
  </head>
 <body>
+  <h1>CO-HELP 2021</h1>
   <div class="wrap">
-    <div class="search">
+    <!--<div class="search">
       <form action='/query'>
         <input type="text" name="query" class="searchTerm search" placeholder="What are you looking for?">
         <button type="submit" class="searchButton searchButton">
-        <i class="fa fa-search">Submit</i>
+        <i class="fa fa-search"></i>
         </button>
       </form> 
-    </div>
+    </div>-->
+
+    <div class="sb-example-1">
+      <form action='/query'>
+      <div class="search">
+          <input type="text" name="query" class="searchTerm" placeholder="What are you looking for?">
+          <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+          </button>
+      </form>
+      </div>
+  </div>
   </div>
 </body>
 </html>
-
-
-* {
-  box-sizing:border-box;
-  margin : 0;
-  padding: 0;
-}
-
-body{
-  background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh5HtwZ-ieDwVVwdEGLjShdXmxH-gAxMy58w&usqp=CAU');
-  text-align:center;
-}
-
-#handle{
-  display:inline-block;
-  font-size:16px;
-  font-weight: normal;
-  line-height:20px;
-  border-color: #eee #ddd rgb(139, 134, 134);
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-  margin: 10px 5px;
-  padding: 0 16px 16px 16px;
-  max-width: 468px;
-}
-
-
-
