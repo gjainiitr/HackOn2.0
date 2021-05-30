@@ -1,0 +1,127 @@
+<html>
+    <head>
+     <link href="next.css" rel="stylesheet" /> 
+     <script src="https://fonts.googleapis.com/css?family=Open+Sans)"></script>
+     
+    <style>
+        body {
+        background: #f2f2f2;
+        font-family: 'Open Sans', sans-serif;
+        }
+
+        .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+        }
+
+        .searchTerm {
+        width: 100%;
+        border: 3px solid #00B4CC;
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+        }
+
+        .searchTerm:focus{
+        color: #00B4CC;
+        }
+
+        .searchButton {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+        }
+
+        /*Resize the wrap to see the search bar change!*/
+        .wrap{
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+
+        #app {
+  height: 100%;
+  padding-top: 0px;
+  text-align: center;
+}
+
+#app .button {
+  margin-bottom: 20px;
+}
+
+#app .tweet {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+}
+
+#app .box {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+#app .content small {
+  color: #00d1b2;
+}
+
+#app img {
+  border-radius: 30px;
+}
+
+#app .level-item {
+  padding-left: 10px;
+  color: #00d1b2;
+}
+
+#app input:focus {
+  border-color: #00d1b2;  
+}
+
+#app .likes {
+  padding: 0 7.5px;
+}
+
+#app input {
+  font-weight: bold;
+}
+
+#app .tweets-move {
+  transition: transform 1s;
+}
+    </style>
+ </head>
+ 
+ <body>
+        <form action='/query'>
+            <input type="text" name="query" class="searchTerm search" placeholder="What are you looking for?">
+            <button type="submit" class="searchButton searchButton">
+            <i class="fa fa-search">Submit</i>
+            </button>
+        </form> 
+
+        <div id="app" class="columns">
+            <div class="column">
+              <tweet-component v-for="tweet in tweets" :tweet="tweet" />
+              <div>
+                {% for item in variable %}
+                <p id="handle"> {{item.handle}} posted it</p>
+                <p id="post">Post is: {{item.post}}</p>
+                {% endfor %}
+            </div>
+            </div>
+          </div>
+       
+</body>     
+</html>
